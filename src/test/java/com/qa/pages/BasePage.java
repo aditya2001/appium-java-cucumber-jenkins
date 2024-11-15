@@ -31,52 +31,52 @@ public class BasePage {
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
 
-    public void waitForVisibility(WebElement e) {
+    public void waitForVisibility(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TestUtils.WAIT));
-        wait.until(ExpectedConditions.visibilityOf(e));
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitForVisibility(By e) {
+    public void waitForVisibility(By element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TestUtils.WAIT));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(e));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    public void clear(WebElement e) {
-        waitForVisibility(e);
-        e.clear();
+    public void clear(WebElement element) {
+        waitForVisibility(element);
+        element.clear();
     }
 
-    public void click(WebElement e) {
-        waitForVisibility(e);
-        e.click();
+    public void click(WebElement element) {
+        waitForVisibility(element);
+        element.click();
     }
 
-    public void click(WebElement e, String msg) {
-        waitForVisibility(e);
+    public void click(WebElement element, String msg) {
+        waitForVisibility(element);
         utils.log().info(msg);
-        e.click();
+        element.click();
     }
 
-    public void click(By e, String msg) {
-        waitForVisibility(e);
+    public void click(By element, String msg) {
+        waitForVisibility(element);
         utils.log().info(msg);
-        driver.findElement(e).click();
+        driver.findElement(element).click();
     }
 
-    public void sendKeys(WebElement e, String txt) {
-        waitForVisibility(e);
-        e.sendKeys(txt);
+    public void sendKeys(WebElement element, String txt) {
+        waitForVisibility(element);
+        element.sendKeys(txt);
     }
 
-    public void sendKeys(WebElement e, String txt, String msg) {
-        waitForVisibility(e);
+    public void sendKeys(WebElement element, String txt, String msg) {
+        waitForVisibility(element);
         utils.log().info(msg);
-        e.sendKeys(txt);
+        element.sendKeys(txt);
     }
 
-    public String getAttribute(WebElement e, String attribute) {
-        waitForVisibility(e);
-        return e.getAttribute(attribute);
+    public String getAttribute(WebElement element, String attribute) {
+        waitForVisibility(element);
+        return element.getAttribute(attribute);
     }
 
     public String getAttribute(By e, String attribute) {
@@ -84,14 +84,14 @@ public class BasePage {
         return driver.findElement(e).getAttribute(attribute);
     }
 
-    public String getText(WebElement e, String msg) {
+    public String getText(WebElement element, String msg) {
         String txt;
         switch(new GlobalParams().getPlatformName()){
             case "Android":
-                txt = getAttribute(e, "text");
+                txt = getAttribute(element, "text");
                 break;
             case "iOS":
-                txt = getAttribute(e, "label");
+                txt = getAttribute(element, "label");
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + new GlobalParams().getPlatformName());
@@ -146,7 +146,8 @@ public class BasePage {
                         + "new UiSelector()."+ childLocAttr +"(\"" + childLocValue + "\"));"));
     }
 
-    public WebElement iOSScrollToElementUsingMobileScroll(WebElement e) {
+    public WebElement iOSScrollToElementUsingMobileScroll(WebElement e
+    ) {
         RemoteWebElement element = ((RemoteWebElement) e);
         String elementID = element.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
