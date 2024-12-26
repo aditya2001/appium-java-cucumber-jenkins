@@ -47,31 +47,6 @@ Another way -> The recommended way to provide capabilities for driver creation i
    driver = new IOSDriver(new URL(url), options);
 ```
 
-Locators in Appium - @AndroidFindBy and @iOSXCUITFindBy
-=========================================
-In the page object model, we define locators for an element for both the platforms.
-First we create a page and using appium inspector, identify locators for android and ios. Then, define them using @AndroidFindBy and @iOSXCUITFindBy respectively.
-
-
-Mobile Gestures in Appium
-=========================================
-In Appium, mobile gestures refer to the actions that users perform on their mobile devices by touching or swiping the screen. Appium supports a variety of mobile gestures that can be used to automate mobile testing, including:
-
-1. Long press — A tap and hold on the screen for a specified duration.
-2. Swipe — A single swipe in any direction on the screen.
-3. Scroll - This gesture is used to simulate a scroll action on the mobile device
-4. Tap — A single tap on the screen.
-5. Double tap — Two quick taps on the screen.
-6. Pinch — A two-finger gesture used to zoom in or out.
-7. Zoom — A two-finger gesture used to magnify or reduce the size of the content.
-8. Drag and drop — Moving an object on the screen by dragging it with one finger and dropping it at a new location.
-
-mobile:clickGesture -> This gesture performs click action on the given element.
-
-driver.executeScript("mobile: clickGesture", ImmutableMap.of(
-"elementId", ((RemoteWebElement) element).getId()
-));
-
 
 
 Framework implements below best practices
